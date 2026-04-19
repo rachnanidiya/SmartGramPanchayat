@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Gram Panchayat</title>
+    <link rel="stylesheet" href="\static\css\style.css">
+</head>
+<body>
+
+    <div class="container-l">
+        <!-- Background Image -->
+        <img src="/static/images/village_background.jpg" alt="Background" class="background-image">
+        
+        <!-- Login Section -->
+        <div class="login-container">
+            <!-- Left Image Section -->
+            <div class="left-section">
+                <img src="/static/images/village_background.jpg" alt="Village Scene">
+            </div>
+
+            <!-- Right Form Section -->
+            <div class="right-section">
+                <div class="login-box">
+                    <div class="avatar">
+                        <img src="/static/images/user.jpg" alt="User Icon">
+                    </div>
+                    <h2>Login</h2>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="input-box">
+                            <span class="icon">👤</span>
+                            <input type="text" placeholder="Username" name="username" for="username" required>
+                        </div>
+                        
+                        <div class="input-box">
+                            <span class="icon">🔒</span>
+                            <input type="password" placeholder="Password" name="password" for="password" required>
+                        </div>
+
+                      
+
+                        <button type="submit" class="login-btn">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

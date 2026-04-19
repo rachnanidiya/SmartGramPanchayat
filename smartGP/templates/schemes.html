@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Gram Panchayat Schemes</title>
+    <link rel="stylesheet" href="\static\css\style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Logo on the Extreme Left -->
+        <div class="logo">
+            
+        </div>
+    
+        <!-- Centered Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        
+            {% if request.user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% else %}
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    <li><a href="/news/">News</a></li>
+                    <li><a href="/apply/">Apply</a></li>
+                    <li><a href="/complaint/">Complaint</a></li>
+                    <li><a href="/profile/">MyProfile</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="/about/">About</a></li>
+                <li><a href="/schemes/">Schemes</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/login/" class="auth-btn">Login</a></li>
+                <li><a href="/register/" class="auth-btn">Register</a></li>
+            {% endif %}</ul>
+    </nav>
+  
+  <!-- Header Section -->
+  <div class="about-header">
+    <h1>Government Schemes for Rural Development</h1>
+    <p>Enhancing livelihoods through welfare programs, financial assistance, and digital empowerment initiatives.</p>
+</div>
+
+    <div class="scheme-info">
+        <p>
+            The Smart Gram Panchayat actively implements various welfare schemes to improve rural development and uplift the community. 
+            From <b>digital literacy programs</b> to <b>agriculture support</b> and <b>healthcare initiatives</b>, each scheme is designed to address 
+            key needs and enhance the quality of life. The Panchayat ensures <b>transparent governance</b>, efficient allocation of resources, 
+            and seamless execution of these schemes to benefit every household. By leveraging technology and community participation, 
+            these initiatives foster sustainable growth and self-reliance in the village.
+        </p>
+    </div>
+    
+    <div class="container2">
+        <div class="card">
+            <h2>Digital Literacy Program</h2>
+            <p>Empowering villagers with digital skills for a smarter future.</p>
+            <button><a href="/digital-literacy/" style="color: white;">Learn More</a></button>
+        </div>
+
+        <div class="card">
+            <h2>Smart Agriculture Initiative</h2>
+            <p>Providing farmers with AI-based solutions for better yield.</p>
+            <button><a href="/agriculture/" style="color: white;">Learn More</a></button>
+        </div>
+
+        <div class="card">
+            <h2>Renewable Energy Support</h2>
+            <p>Solar panel installations to reduce dependency on fossil fuels.</p>
+            <button><a href="/energy/" style="color: white;">Learn More</a></button>
+        </div>
+
+        <div class="card">
+            <h2>Healthcare for All</h2>
+            <p>Telemedicine services and health awareness programs.</p>
+            <button><a href="/healthcare/" style="color: white;">Learn More</a></button>
+        </div>
+        <div class="card">
+            <h2> Employment Generation & Skill Development Program</h2>
+            <p>To create job opportunities and skill training for rural youth.</p>
+            <button><a href="/employment/" style="color: white;">Learn More</a></button>
+        </div>
+        <div class="card">
+            <h2>  Rural Women Empowerment Program</h2>
+            <p>To promote entrepreneurship and financial independence among rural women.</p>
+            <button><a href="/women/" style="color: white;">Learn More</a></button>
+        </div>
+    </div>
+
+    </div>
+
+    <footer class="smart-footer">
+        <div class="footer-container">
+            <!-- Left Section (Branding) -->
+            <div class="footer-brand">
+                <h2>Smart Gram Panchayat</h2>
+                <p>Empowering villages through digital innovation and governance.</p>
+            </div>
+    
+            <!-- Middle Section (Links) -->
+            <div class="footer-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    
+                </ul>
+            </div>
+    
+            <!-- Right Section (Contact Details) -->
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> info@smartgram.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+            </div>
+        </div>
+    
+        <!-- Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Smart Gram Panchayat | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

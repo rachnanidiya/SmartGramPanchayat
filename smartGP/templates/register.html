@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Gram Panchayat - Register</title>
+    <link rel="stylesheet" href="\static\css\style.css">
+    <style> 
+    body {
+        background: url('/static/images/village_background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container-r">
+        <div class="image-section-r"></div>
+        
+        <div class="form-section-r">
+            <h1>Smart Gram Panchayat</h1>
+            <h2>Register</h2>
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group-r ">
+                            <label for="username"><i class="fas fa-user"></i></label>
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group-r">
+                            <label for="first_name"><i class="fas fa-user"></i></label>
+                            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group-r">
+                            <label for="last_name"><i class="fas fa-user"></i></label>
+                            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group-r">
+                            <label for="mobile_number"><i class="fas fa-mobile-alt"></i></label>
+                            <input type="text" id="mobile_number" name="mobile_number" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="form-group-r">
+                            <label for="password"><i class="fas fa-lock"></i></label>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group-r">
+                            <label for="confirm-password"><i class="fas fa-check-circle"></i></label>
+                            <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                        </div>
+                        <button type="submit" class="rbutton">Register</button>
+                        <p class="login-text">Have already an account? <a href="/login/">Login here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

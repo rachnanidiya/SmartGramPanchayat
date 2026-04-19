@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Gram Panchayat Complaint Portal</title>
+    <style>/* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        /* Body Styling */
+        body {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 40px;
+        }
+        
+        /* Header */
+        .header9 {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        
+        .header9 h1 {
+            color: #2F80ED;
+            margin-bottom: 10px;
+        }
+        
+        .header9 p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Main Container */
+       
+        </style>
+        <link rel="stylesheet" href="\static\css\style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Logo on the Extreme Left -->
+        <div class="logo">
+            
+        </div>
+    
+        <!-- Centered Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        
+            {% if request.user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% else %}
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    <li><a href="/news/">News</a></li>
+                    <li><a href="/apply/">Apply</a></li>
+                    <li><a href="/complaint/">Complaint</a></li>
+                    <li><a href="/profile/">MyProfile</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="/about/">About</a></li>
+                <li><a href="/schemes/">Schemes</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/login/" class="auth-btn">Login</a></li>
+                <li><a href="/register/" class="auth-btn">Register</a></li>
+            {% endif %}</ul>
+    </nav>
+    <header class="header9">
+        <h1>Smart Gram Panchayat Complaint Portal</h1>
+        <p>Help us improve our village by reporting issues.</p>
+    </header>
+
+    <div class="container9">
+        <div class="form-container9">
+            <h2>Submit a Complaint</h2>
+            <p>Please fill in the details below to submit your complaint.</p>
+
+            <form method="POST" action="{% url 'complaint' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+            
+                <label for="email">Email (Optional):</label>
+                <input type="email" id="email" name="email">
+            
+                <label for="complaintType">Complaint Type:</label>
+                <select id="complaintType" name="complaintType" required>
+                    <option value="road">Damaged Roads</option>
+                    <option value="electricity">Electricity Issues</option>
+                    <option value="water">Water Supply Problems</option>
+                    <option value="waste">Garbage & Sanitation</option>
+                    <option value="health">Health & Medical Facilities</option>
+                    <option value="other">Other</option>
+                </select>
+            
+                <label for="description">Complaint Description:</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            
+                <label for="imageUpload">Attach Image (Optional):</label>
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+            
+                <button type="submit">Submit Complaint</button>
+            </form>
+            
+            {% if messages %}
+                <div>
+                    {% for message in messages %}
+                        <p style="color: green;">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            </div>
+
+        <div class="info-container9">
+            <h2>Complaint Submission Guidelines</h2>
+            <ul>
+                <li>Provide <b>accurate details</b> for faster resolution.</li>
+                <li>Attach an <b>image</b> if possible for better clarity.</li>
+                <li>Ensure your <b>contact information</b> is correct.</li>
+                <li>Complaints will be addressed within <b>7 working days</b>.</li>
+                <li>For urgent matters, contact the <b>Gram Panchayat Office</b> directly.</li>
+            </ul>
+        </div>
+    </div>
+
+   
+
+</body>
+</html>

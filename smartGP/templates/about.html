@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Gram Panchayat</title>
+    <link rel="stylesheet" href="\static\css\style.css">
+    <style>
+      
+        </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- Logo on the Extreme Left -->
+        <div class="logo">
+           
+        </div>
+    
+        <!-- Centered Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        
+            {% if request.user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% else %}
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    <li><a href="/news/">News</a></li>
+                    <li><a href="/apply/">Apply</a></li>
+                    <li><a href="/complaint/">Complaint</a></li>
+                    <li><a href="/profile/">MyProfile</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="/about/">About</a></li>
+                <li><a href="/schemes/">Schemes</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/login/" class="auth-btn">Login</a></li>
+                <li><a href="/register/" class="auth-btn">Register</a></li>
+            {% endif %}</ul>
+    </nav>
+    
+   
+
+
+    <!-- Header Section -->
+    <div class="about-header">
+        <h1>About Smart Gram Panchayat</h1>
+        <p>Empowering rural communities through smart governance, digital services, and sustainable development for a brighter future.</p>
+    </div>
+
+
+   
+    <div class="about">
+        <div class="about-content">
+            <p style="text-align: justify;">The Smart Gram Panchayat initiative is dedicated to transforming rural governance through digital innovation and community-driven development. Our mission is to empower villages by integrating modern technology into governance, infrastructure, education, and public services.</p>
+            
+            <h2>Our Vision</h2>
+            <p>To create a self-sustaining, digitally empowered rural ecosystem where every citizen has access to modern infrastructure, education, and economic opportunities.</p>
+
+            <h2>Our Mission</h2>
+            <p>✔ Implement smart governance solutions for transparency and efficiency.<br>
+               ✔ Promote digital literacy and skill development programs.<br>
+               ✔ Improve infrastructure with sustainable and eco-friendly solutions.<br>
+               ✔ Enhance healthcare, education, and employment opportunities.<br>
+               ✔ Empower rural communities through participatory decision-making.</p>
+            
+            <p>At Smart Gram Panchayat, we believe in inclusive growth, where every villager plays a crucial role in shaping a brighter, self-sufficient future. Together, we are building a digitally empowered, sustainable, and progressive rural India. 🚀</p>
+        </div>
+    </div>
+</center>
+    <!-- Cards Section -->
+    <section class="cards-container">
+        <div class="card-about">
+            <h2>Digital Services</h2>
+            <p>Providing online documentation, land records, and e-governance facilities to villagers.</p>
+        </div>
+        <div class="card-about">
+            <h2>Infrastructure Development</h2>
+            <p>Modernizing roads, water supply, and sanitation systems for better living conditions.</p>
+        </div>
+        <div class="card-about">
+            <h2>Education & Awareness</h2>
+            <p>Promoting digital literacy and awareness programs for the rural community.</p>
+        </div>
+        <div class="card-about">
+            <h2>Renewable Energy</h2>
+            <p>Encouraging the use of solar and wind energy for sustainable rural development.</p>
+        </div>
+        <div class="card-about">
+            <h2>Healthcare & Wellness</h2>
+            <p>Improving access to medical facilities, telemedicine, and hygiene awareness.</p>
+        </div>
+        <div class="card-about">
+            <h2>Women & Youth Empowerment</h2>
+            <p>Providing self-employment opportunities and skill training for a brighter future.</p>
+        </div>
+    </section>
+
+    <center><button class="button-about" id="toggle-btn">Show More</button></center>
+
+    <footer class="smart-footer">
+        <div class="footer-container">
+            <!-- Left Section (Branding) -->
+            <div class="footer-brand">
+                <h2>Smart Gram Panchayat</h2>
+                <p>Empowering villages through digital innovation and governance.</p>
+            </div>
+    
+            <!-- Middle Section (Links) -->
+            <div class="footer-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    
+                </ul>
+            </div>
+    
+            <!-- Right Section (Contact Details) -->
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> info@smartgram.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+            </div>
+        </div>
+    
+        <!-- Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Smart Gram Panchayat | All Rights Reserved</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("toggle-btn").addEventListener("click", function() {
+            let aboutSection = document.querySelector(".about-content");
+
+            if (aboutSection.style.display === "none") {
+                aboutSection.style.display = "block";
+                this.textContent = "Show Less";
+            } else {
+                aboutSection.style.display = "none";
+                this.textContent = "Show More";
+            }
+        });
+    </script>
+</body>
+</html>

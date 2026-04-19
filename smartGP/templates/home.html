@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Gram Panchayat</title>
+    <link rel="stylesheet" href="\static\css\style.css">
+    
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Logo on the Extreme Left -->
+        <div class="logo">
+            
+        </div>
+    
+        <!-- Centered Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        
+            {% if request.user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% else %}
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    <li><a href="/news/">News</a></li>
+                    <li><a href="/apply/">Apply</a></li>
+                    <li><a href="/complaint/">Complaint</a></li>
+                    <li><a href="/profile/">MyProfile</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="/about/">About</a></li>
+                <li><a href="/schemes/">Schemes</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/login/" class="auth-btn">Login</a></li>
+                <li><a href="/register/" class="auth-btn">Register</a></li>
+            {% endif %}</ul>
+    </nav>
+    
+   
+
+
+    <!-- Header Section -->
+   <!-- Header Section -->
+   <header class="header">
+    <div class="header-container">
+        <!-- Header Image -->
+        <div class="header-image-container">
+            <img src="/static/images/mh4.png" alt="Smart Gram Panchayat" class="header-image">
+        </div>
+
+        <!-- Header Text -->
+        <div class="header-text">
+            <h1>Smart Villages, Stronger Communities</h1>
+            <p>A New Era of Development, Connectivity, and Progress.</p>
+        </div>
+    </div>
+</header>
+
+    <!-- First Container (Image Left) -->
+    <section class="container fade-in">
+        <div class="image">
+            <img src="\static\images\government.jpg" alt="Description">
+        </div>
+        <div class="content">
+            <h2>Empowering Rural Development
+            </h2>
+            <h3>Building a Self-Sufficient and Progressive Village
+            </h3>
+            <p>Smart Gram Panchayat is dedicated to transforming villages into self-reliant and digitally connected communities. Our initiatives focus on infrastructure development, digital governance, clean energy, and sustainable agriculture. By leveraging technology and community-driven projects, we aim to improve the quality of life in rural areas, ensuring better healthcare, education, and employment opportunities for all.</p>
+        </div>
+    </section>
+
+    <!-- Second Container (Image Right) -->
+    <section class="container reverse fade-in">
+        <div class="content">
+            <h2>Transparent & Digital Governance
+            </h2>
+            <h3>Simplifying Services for Every Citizen
+            </h3>
+            <p>We are committed to promoting transparency, accountability, and efficiency in rural governance through digital platforms. Our Smart Gram Panchayat initiative enables villagers to access government schemes, land records, e-Gram services, grievance redressal, and welfare programs online. With a focus on ease of access and digital literacy, we aim to bridge the gap between rural communities and essential services, making governance truly inclusive and citizen-friendly.</p>
+        </div>
+        <div class="image">
+            <img src="\static\images\transperant.jpg" alt="Description">
+        </div>
+    </section>
+     <!-- Smart Initiatives -->
+    <center> <h2 style="font-family: Valty DEMO;font-size: 40px;">Smart Village Initiatives</h2></center>
+     <div class="section-container">
+        
+        <div class="initiatives-container">
+            <div class="initiative">
+                <img src="\static\images\g3.jpg" alt="Digital Services">
+                <h3>Digital Services</h3>
+                <p>Providing online documentation, land records, and e-governance facilities.</p>
+            </div>
+            <div class="initiative">
+                <img src="\static\images\g5.jpg" alt="Renewable Energy">
+                <h3>Renewable Energy</h3>
+                <p>Encouraging solar and wind energy for sustainable development.</p>
+            </div>
+            <div class="initiative">
+                <img src="\static\images\g4.jpg" alt="Education & Awareness">
+                <h3>Education & Awareness</h3>
+                <p>Promoting digital literacy and awareness programs in rural communities.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- News & Updates -->
+    <center> <h2 style="font-family: Valty DEMO;font-size: 40px;">Latest News & Updates</h2>
+    <div class="section-container">
+       
+        <div class="news-container">
+            <div class="news-item">
+                <h3>Solar Power Project Launched</h3>
+                <p>The Gram Panchayat has installed a 50KW solar power plant to supply electricity to the village.</p>
+            </div>
+            <div class="news-item">
+                <h3>Digital Literacy Campaign Success</h3>
+                <p>Over 500 villagers have been trained to use online government services efficiently.</p>
+            </div>
+            <div class="news-item">
+                <h3>Water Conservation Initiative</h3>
+                <p>A new rainwater harvesting system has been implemented to combat water shortages.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Stories -->
+    <center> <h2 style="font-family: Valty DEMO;font-size: 40px;">Success Stories</h2>
+    <div class="section-container">
+       
+        <div class="success-container">
+            <div class="success-story">
+                <img src="\static\images\g1.jpg" alt="Farmer Success">
+                <div class="success-content">
+                    <h3>Meet Ravi Kumar</h3>
+                    <p>A small farmer who leveraged government schemes to double his income through organic farming.</p>
+                </div>
+            </div>
+            <div class="success-story">
+                <img src="\static\images\g2.jpg" alt="Women Empowerment">
+                <div class="success-content">
+                    <h3>Empowering Women</h3>
+                    <p>Local women trained in self-employment initiatives are now running successful businesses.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="smart-footer">
+        <div class="footer-container">
+            <!-- Left Section (Branding) -->
+            <div class="footer-brand">
+                <h2>Smart Gram Panchayat</h2>
+                <p style="font-size:26px;">Empowering villages through digital innovation and governance.</p>
+            </div>
+    
+            <!-- Middle Section (Links) -->
+            <div class="footer-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    
+                </ul>
+            </div>
+    
+            <!-- Right Section (Contact Details) -->
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> info@smartgram.com</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+            </div>
+        </div>
+    
+        <!-- Bottom Section -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Smart Gram Panchayat | All Rights Reserved</p>
+        </div>
+    </footer>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".fade-in");
+    
+        function checkScroll() {
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+    
+                if (position < windowHeight - 100) {
+                    element.classList.add("show");
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", checkScroll);
+        checkScroll();
+    });
+    </script>
+</body>
+</html>

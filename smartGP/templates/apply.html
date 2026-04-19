@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Scheme - Smart Gram Panchayat</title>
+    <link rel="stylesheet" href="\static\css\style.css">
+    <style>/* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 100px 50px;
+            padding: 0;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+      
+        </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Logo on the Extreme Left -->
+        <div class="logo">
+            
+        </div>
+    
+        <!-- Centered Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        
+            {% if request.user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% else %}
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/schemes/">Schemes</a></li>
+                    <li><a href="/news/">News</a></li>
+                    <li><a href="/apply/">Apply</a></li>
+                    <li><a href="/complaint/">Complaint</a></li>
+                    <li><a href="/profile/">MyProfile</a></li>
+                    <li><a href="/logout/" class="auth-btn">Logout</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="/about/">About</a></li>
+                <li><a href="/schemes/">Schemes</a></li>
+                <li><a href="/news/">News</a></li>
+                <li><a href="/login/" class="auth-btn">Login</a></li>
+                <li><a href="/register/" class="auth-btn">Register</a></li>
+            {% endif %}</ul>
+    </nav>
+  
+<br><br><br><br>
+<br><br><br><br>
+<div class="form-container">
+    <h2 class="form-title">Apply for a Scheme</h2>
+    <div class="info-message">
+        <p>📢 <strong>Important:</strong> Please ensure that all details provided are accurate.  
+           Upload clear and valid documents to avoid application rejection.  
+           If you have any queries, contact your local Gram Panchayat office.</p>
+    </div>
+        <!-- Personal Details Section -->
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            <div class="form-group">
+                <label for="name" class="form-label">Full Name:</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="aadhaar" class="form-label">Aadhaar Number:</label>
+                <input type="text" id="aadhaar" name="aadhaar" class="form-input" required pattern="\d{12}" title="Enter a valid 12-digit Aadhaar number">
+            </div>
+        
+            <div class="form-group">
+                <label for="dob" class="form-label">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" class="form-input" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="gender" class="form-label">Gender:</label>
+                <select id="gender" name="gender" class="form-select" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="mobile" class="form-label">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" class="form-input" required pattern="\d{10}" title="Enter a valid 10-digit mobile number">
+            </div>
+        
+            <div class="form-group">
+                <label for="address" class="form-label">Residential Address:</label>
+                <textarea id="address" name="address" class="form-textarea" rows="3" required></textarea>
+            </div>
+        
+            <div class="form-group">
+                <label for="scheme" class="form-label">Selected Scheme:</label>
+                {% if scheme_name %}
+                    <input type="text" id="scheme" name="scheme" class="form-input" value="{{ scheme_name }}" readonly>
+                {% else %}
+                    <select id="scheme" name="scheme" class="form-select" required>
+                        <option value="" disabled selected>Select a Scheme</option>
+                        <option value="Digital Literacy Program">Digital Literacy Program</option>
+                        <option value="Smart Agriculture Initiative">Smart Agriculture Initiative</option>
+                        <option value="Renewable Energy Support">Renewable Energy Support</option>
+                        <option value="Healthcare for All">Healthcare for All</option>
+                        <option value="Employment Generation & Skill Development">Employment Generation & Skill Development</option>
+                        <option value="Rural Women Empowerment Program">Rural Women Empowerment Program</option>
+                    </select>
+                {% endif %}
+            </div>
+        
+            <div class="form-group">
+                <label for="income" class="form-label">Annual Income (INR):</label>
+                <input type="number" id="income" name="income" class="form-input" required>
+            </div>
+            <div class="form-group"><label for="description">Description</label>
+                <textarea name="description" id="description"></textarea>
+                </div>
+            <div class="form-group">
+                <label for="documents" class="form-label">Upload Required Documents (PDF/JPG):</label>
+                <input type="file" id="documents" name="documents" class="form-input" accept=".pdf, .jpg, .jpeg, .png">
+            </div>
+        
+            <div class="btn-container">
+                <button type="submit" class="btn btn-submit">Submit Application</button>
+            </div>
+        
+        </form></div>
+        <div class="sidebar">
+            <h3>📄 Required Documents</h3>
+            <br>
+            <h4><b><i>all the documents should be merged into one.</i></b></h4>
+            <ul>
+                <li>Aadhaar Card</li>
+                <li>Ration Card</li>
+                <li>Income Certificate</li>
+                <li>Address Proof</li>
+                <li>Recent Passport Size Photograph</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

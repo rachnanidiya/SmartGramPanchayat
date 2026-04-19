@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fef9f3;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #2f3640;
+        }
+
+        .back-home {
+            float: right;
+            margin-top: -50px;
+            margin-right: 10px;
+        }
+
+        .back-home a {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-home a:hover {
+            background-color: #27ae60;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #dcdde1;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f2f6;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            margin: 0 3px;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .btn-edit {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .section {
+            margin-top: 60px;
+        }
+
+        .approved-text {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, Admin!</h1>
+    <div class="back-home">
+        <a href="/">← Back to Home</a>
+    </div>
+
+    <!-- Complaints Table -->
+    <div class="section">
+        <h2>Complaints</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Submitted On</th>
+                <th>Actions</th>
+            </tr>
+            {% for complaint in complaints %}
+            <tr>
+                <td>{{ complaint.name }}</td>
+                <td>{{ complaint.get_complaint_type_display }}</td>
+                <td>{{ complaint.description }}</td>
+                <td>{{ complaint.created_at }}</td>
+                <td>
+                    {% if complaint.is_approved %}
+                        <span class="approved-text">Approved</span>
+                    {% else %}
+                        <a href="{% url 'approve_complaint' complaint.id %}" class="btn btn-edit">Approve</a>
+                    {% endif %}
+                    <a href="{% url 'delete_complaint' complaint.id %}" class="btn btn-delete" onclick="return confirm('Delete this complaint?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Scheme Applications Table -->
+    <div class="section">
+        <h2>Scheme Applications</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Scheme</th>
+                <th>Mobile</th>
+                <th>Income</th>
+               
+                <th>Aadhar</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            {% for app in applications %}
+            <tr>
+                <td>{{ app.name }}</td>
+                <td>{{ app.scheme }}</td>
+                <td>{{ app.mobile }}</td>
+                <td>{{ app.income }}</td>
+                <td>{{ app.aadhaar }}</td>
+                <td>{{ app.description }}</td>
+                <td>
+                    {% if app.is_approved %}
+                        <span class="approved-text">Approved</span>
+                    {% else %}
+                        <a href="{% url 'approve_scheme' app.id %}" class="btn btn-edit">Approve</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- News Table -->
+    <div class="section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>News & Announcements</h2>
+            <a href="{% url 'add_news' %}" class="btn btn-edit" style="background-color: #2ecc71;">+ Add News</a>
+        </div>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Created At</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+            {% for news in news_items %}
+            <tr>
+                <td>{{ news.title }}</td>
+                <td>{{ news.created_at }}</td>
+                <td>{{ news.content|truncatechars:100 }}</td>
+                <td>
+                    <a href="{% url 'edit_news' news.id %}" class="btn btn-edit">Edit</a>
+                    <a href="{% url 'delete_news' news.id %}" class="btn btn-delete" onclick="return confirm('Delete this news item?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
